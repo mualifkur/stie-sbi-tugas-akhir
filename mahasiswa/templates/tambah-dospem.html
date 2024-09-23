@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<center>
+    <h1>TAMBAH DOSEN PEMBIMBING</h1>
+</center>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {% if message %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endif %}
+            <form action="/tambah-dosen-pembimbing/" method="post">
+                {% csrf_token %}
+
+                {{ form }}
+            
+                <br>
+                <a href="/data-dosen-pembimbing" class="btn btn-danger"><i class="fa fa-arrow-left"></i></a>
+                <button class="btn btn-success"><i class="fa fa-floppy-disk"></i></button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+         <table class="table table-bordered table-striped" style="table-layout: fixed;">
+            <thead>
+               <tr>
+                  <th>NPM</th>
+                  <th>NAMA MAHASISWA</th>
+                  <th>HARI</th>
+                  <th>TANGGAL</th>
+                  <th>PENGUJI 1</th>
+                  <th>PENGUJI 2</th>
+                  <th>PENGAWAS</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for jadwalujian in jdwl %}
+                  <tr>
+                     <td>{{ jadwalujian.mahasiswa_id }}</td>
+                     <td>{{ jadwalujian.mahasiswa_id.nama }}</td>
+                     <td>{{ jadwalujian.hari }}</td>
+                     <td>{{ jadwalujian.tanggal }}</td>
+                     <td>{{ jadwalujian.penguji1 }}</td>
+                     <td>{{ jadwalujian.penguji2 }}</td>
+                     <td>{{ jadwalujian.pengawas }}</td>
+                  </tr>
+               {% endfor %}
+            </tbody>
+         </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+<center>
+    <h1>DAFTAR JADWAL UJIAN SIDANG TUGAS AKHIR</h1>
+</center><br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a href="{% url 'tambah_jadwal_ujian' %}" class="btn btn-success"><i class="fa fa-calendar-plus"></i> Tambah Jadwal</a><br><br>
+            {% if message %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endif %}
+         <table class="table table-bordered table-striped">
+            <thead>
+               <tr>
+                  <th>NPM</th>
+                  <th>NAMA MAHASISWA</th>
+                  <th>HARI</th>
+                  <th>TANGGAL</th>
+                  <th>PENGUJI 1</th>
+                  <th>PENGUJI 2</th>
+                  <th>PENGAWAS</th>
+                  <th>ACTION</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for jadwalujian in jdwl %}
+                  <tr>
+                     <td>{{ jadwalujian.mahasiswa_id }}</td>
+                     <td>{{ jadwalujian.mahasiswa_id.nama }}</td>
+                     <td>{{ jadwalujian.hari }}</td>
+                     <td>{{ jadwalujian.tanggal }}</td>
+                     <td>{{ jadwalujian.penguji1 }}</td>
+                     <td>{{ jadwalujian.penguji2 }}</td>
+                     <td>{{ jadwalujian.pengawas }}</td>
+                     <td style="text-align:center;">
+                        <a href="{% url 'ubah_jadwal_ujian' jadwalujian.id %}" class="btn btn-primary"><i class="fa fa-pen-to-square"></i></a>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#hapus-{{ jadwalujian.id }}" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                     </td>
+
+                     <div class="modal" id="hapus-{{ jadwalujian.id }}">
+                        <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <div class="modal-title">
+                                    
+                                 </div>
+                              </div>
+                              <div class="modal-body">
+                                 Apakah anda yakin ingin menghapus jadwal ujian&nbsp;<strong>{{ jadwalujian.mahasiswa_id| upper }}</strong> ?
+                              </div>
+                              <div class="modal-footer">
+                                 <a href="{% url 'hapus_jadwal_ujian' jadwalujian.id %}" class="btn btn-danger"><i class="fa fa-check"></i></a>
+                                 <button data-bs-dismiss="modal" class="btn btn-dark"><i class="fa fa-xmark"></i></button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </tr>
+               {% endfor %}
+            </tbody>
+         </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

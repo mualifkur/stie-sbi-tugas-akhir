@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+   <div class="row">
+      <div class="col-md-12">
+         <a href="{% url 'tambah_mahasiswa' %}" class="btn btn-success"><i class="fa-solid fa-user-plus"></i> Tambah Mahasiswa</a><br><br>
+            {% if message %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endif %}
+         <table class="table table-bordered table-striped" style="table-layout: fixed;">
+            <thead>
+               <tr>
+                  <th>NPM</th>
+                  <th>NAMA</th>
+                  <th>JURUSAN</th>
+                  <th>TAHUN</th>
+                  <th>ACTION</th>
+               </tr>
+            </thead>
+            <tbody>
+               {% for mahasiswa in mhs %}
+                  <tr>
+                     <td>{{ mahasiswa.nim }}</td>
+                     <td>{{ mahasiswa.nama }}</td>
+                     <td>{{ mahasiswa.jurusan }}</td>
+                     <td>{{ mahasiswa.tahun }}</td>
+                     <td style="text-align:center;">
+                        <a href="{% url 'ubah_mahasiswa' mahasiswa.id %}" class="btn btn-primary"><i class="fa fa-pen-to-square"></i></a>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#hapus-{{ mahasiswa.id }}" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                     </td>
+
+                     <div class="modal" id="hapus-{{ mahasiswa.id }}">
+                        <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <div class="modal-title">
+                                    
+                                 </div>
+                              </div>
+                              <div class="modal-body">
+                                 Apakah anda yakin ingin menghapus data,&nbsp;<strong>{{ mahasiswa.nama | upper }}</strong> ?
+                              </div>
+                              <div class="modal-footer">
+                                 <a href="{% url 'hapus_mahasiswa' mahasiswa.id %}" class="btn btn-danger"><i class="fa fa-check"></i></a>
+                                 <button data-bs-dismiss="modal" class="btn btn-dark"><i class="fa fa-xmark"></i></button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </tr>
+               {% endfor %}
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>
+ 
+{% endblock %}

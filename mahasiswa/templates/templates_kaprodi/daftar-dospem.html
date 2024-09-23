@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+    <h1>DATA DOSEN PEMBIMBING MAHASISWA</h1>   
+ </center><br>
+ 
+ <div class="container">
+    <div class="row">
+       <div class="col-md-12">
+        <a href="/tambah-dosen-pembimbing" class="btn btn-success"><i class="fa fa-user-plus"></i> Tambah Data</a><br><br>
+          <table class="table table-bordered table-striped">
+             <thead>
+                <tr>
+                   <th>NPM</th>
+                   <th>NAMA MAHASISWA</th>
+                   <th>NAMA DOSEN PEMBIMBING</th>
+                   <th>ACTION</th>
+                </tr>
+             </thead>
+             <tbody>
+                {% for dosenpembimbing in dospem %}
+                   <tr>
+                      <td>{{ dosenpembimbing.mahasiswa_id }}</td>
+                      <td>{{ dosenpembimbing.mahasiswa_id.nama }}</td>
+                      <td>{{ dosenpembimbing.nama_dosen }}</td>
+                      <td style="text-align:center;">
+                        <a href="{% url 'ubah_dospem' dosenpembimbing.id %}" class="btn btn-primary"><i class="fa fa-pen-to-square"></i></a>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#hapus-{{ dosenpembimbing.id }}" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                     </td>
+                     <div class="modal" id="hapus-{{ dosenpembimbing.id }}">
+                        <div class="modal-dialog">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <div class="modal-title">
+                                    <h3>Hapus</h3>
+                                 </div>
+                              </div>
+                              <div class="modal-body">
+                                 Apakah anda ingin menghapus,&nbsp;<strong>{{ dosenpembimbing.nama_dosen | upper }}</strong> sebagai dosen pembimbing <strong>{{ dosenpembimbing.mahasiswa_id | upper}}</strong>?
+                              </div>
+                              <div class="modal-footer">
+                                 <a href="{% url 'hapus_dospem' dosenpembimbing.id %}" class="btn btn-danger"><i class="fa fa-check"></i></a>
+                                 <button data-bs-dismiss="modal" class="btn btn-dark"><i class="fa fa-xmark"></i></button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                   </tr>
+                {% endfor %}
+             </tbody>
+
+          </table>
+       </div>
+    </div>
+ </div>
+{% endblock %}

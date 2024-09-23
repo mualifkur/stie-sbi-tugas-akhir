@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %} <br />
+<center>
+  <h1>BEBAS PUSTAKA</h1>
+</center>
+<div class="w-100 d-flex mx-auto mt-5">
+<table class="mx-auto">
+  <tr>
+    <td>Nama Mahasiswa</td>
+    <td>: {{ user.nama_pengguna }}</td>
+  </tr>
+  <td>Program Studi</td>
+  <td>: {{ user.prodi }}</td>
+</tr>
+</tr>
+<td>Dosen Penasihat Akademik</td>
+<td>: {{ user.prodi }}</td>
+</tr>
+<td>Terakhir Login</td>
+<td>: {{ user.last_login }}</td>
+</tr>
+</table>
+</div>
+<hr>
+<br />
+<div class="mx-auto d-flex justify-content-center">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Library</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Data</li>
+    </ol>
+  </nav>
+</div>
+<hr>
+<form method="POST" class="post-form" enctype="multipart/form-data">  
+  {% csrf_token %}  
+  {{ form.as_p }}  
+  <button type="submit" class="save btn btn-default">Save</button>  
+</form>  
+{% endblock %}

@@ -1,0 +1,208 @@
+<style>
+  body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  h1 {
+    text-align: center;
+  }
+  .section-title {
+    font-weight: bold;
+  }
+  .content {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .team-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px; /* Mengurangi jarak bawah antar tabel */
+  }
+  .info-table {
+    width: 60%;
+    border-spacing: 5px;
+  }
+  .info-table td {
+    padding: 2px; /* Mengurangi padding di sekitar sel tabel */
+    vertical-align: top; /* Menjaga teks di bagian atas sel tabel */
+  }
+  .info-table td:nth-child(2) {
+    padding-left: 5px; /* Mengurangi jarak antara kolom pertama dan kolom kedua */
+  }
+  .team-table,
+  .team-table td,
+  .team-table th {
+    border: 1px solid;
+    padding: 0px;
+  }
+  .team-table th {
+    text-align: center;
+    font-weight: bold;
+  }
+  .signature {
+    margin-right: 70px;
+  }
+  .container-table-a {
+    width: 40%;
+    margin-left: 22px;
+  }
+  .container-table-b {
+    width: 70%;
+    margin-left: 22px;
+  }
+  .container-table-c {
+    width: 58%;
+    margin-left: 22px;
+  }
+  .container-table-d {
+    width: 95%;
+  }
+  .container-table-e {
+    width: 90%;
+  }
+
+  .logo-kop img {
+    height: 110px;
+    width: 144px;
+    object-fit: fill;
+  }
+  .container-header-kop {
+    display: flex;
+    justify-content: center;
+    gap: 65px;
+  }
+  
+  .header-kop {
+    color: #27397f;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .header-kop table {
+    color: #27397f;
+  }
+
+  .header-kop h1,
+  p {
+    margin: 0 0;
+    padding: 0 0;
+    text-align: center;
+  }
+  .header-kop table {
+    margin: 0 auto;
+  }
+
+  .hr-style {
+    height: 2px;
+    background-color: #27397f;
+  }
+  .button {
+    color: inherit; /* Warna mengikuti elemen induk */
+    text-decoration: none; /* Menghilangkan garis bawah */
+    padding: 5px 10px; /* Mengatur padding agar mirip dengan tombol */
+    border: 1px solid #ccc; /* Mengatur border agar mirip dengan tombol */
+    background-color: #f8f8f8; /* Warna latar belakang tombol */
+    cursor: pointer; /* Mengubah kursor menjadi pointer untuk efek klik */
+  }
+  
+  .button:hover {
+      background-color: #e6e6e6; /* Warna latar saat hover */
+  }
+  @media print {
+    @page {
+      size: A4; /* Mengatur ukuran kertas menjadi A4 */
+      margin-top: 6cm;
+      margin-left: 2.8cm;
+      margin-bottom: 2.54cm;
+      margin-right: 2.25cm;
+    }
+    .content {
+      width: 100%;
+      margin: 0;
+    }
+    .info-table,
+    .team-table {
+      width: 100%;
+      page-break-inside: avoid; /* Menghindari pemotongan tabel di tengah halaman */
+    }
+    .no-print {
+      display: none;
+    }
+  }
+</style>
+{% load static %} {% block content %}
+{% comment %} <div class="container-header-kop">
+  <div class="logo-kop">
+    <a href="#"><img src="{% static 'images/logo_client.png' %}" alt="" /></a>
+  </div>
+  <div class="header-kop">
+    <h1>STIE SOLUSI BISNIS INDONESIA YOGYAKARTA</h1>
+    <table>
+      <tr>
+        <th scope="row">Program Studi Akutansi</th>
+        <td>:</td>
+        <td>Terakreditasi</td>
+        <td>"B"</td>
+      </tr>
+      <tr>
+        <th scope="row">Program Studi Manajemen</th>
+        <td>:</td>
+        <td>Terakreditasi</td>
+        <td>"B"</td>
+      </tr>
+    </table>
+    <p>
+      Jl. Ring Road Utara No.17, Ngringin, Condongcatur, Kec. Depok, Kabupaten
+      Sleman, Daerah Istimewa Yogyakarta 55283
+    </p>
+  </div>
+</div> {% endcomment %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <center>
+        <p style="font-size: 16px">BERITA ACARA UJIAN SEMINAR TUGAS AKHIR PENELITIAN</p><br><br>
+        <p style="font-size: 16px">JUDUL PENELITIAN:</p><br><br>
+        <p style="font-size: 16px">{{ judul_ta }}</p><br><br><br>
+        <div class="container-table-a">
+          <table class="info-table">
+            <tr>
+              <td>DISUSUN OLEH:</td>
+              <td>{{ nama_mahasiswa }}</td>
+            </tr>
+            <tr>
+              <td>NPM:</td>
+              <td>{{ npm }}</td>
+            </tr>
+          </table>
+        </div><br>
+        <p style="font-size: 16px">Telah dipertahankan di depan Tim penguji dan dinyatakan {{ keterangan }}</p>
+        <p style="font-size: 16px">Pada Tanggal {{ tanggal }}</p><br><br><br>
+        <div class="container-table-b">
+          <table class="info-table">
+            <tr>
+              <td>Pembimbing / Penguji Penelitian:</td>
+              <td>{{ nama_pembimbing }}</td>
+              <td>...........</td>
+            </tr>
+            <tr>
+              <td>Penguji Penelitian:</td>
+              <td>{{ nama_penguji }}</td>
+              <td>...........</td>
+            </tr>
+          </table>
+        </div><br><br>
+        <p style="font-size: 16px">Mengetahui</p>
+        <p style="font-size: 16px">Ketua STIE SBI Yogyakarta</p>
+        <br><br><br><br>
+        <p style="text-decoration: underline; font-size: 16px">DR. Saifudin Zuhri, S.Ag., M.Si</p>
+        <p style="font-size: 16px">NIK 2051021</p>
+      </center>
+      <button class="button no-print" onclick="window.print()">Print</button>
+      <a class="button no-print" href="{% url 'berita_acara' %}">Kembali ke Form</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% block content %}
+<center>
+    <h1>DETAIL DATA, {{ tugasakhir.mahasiswa_id }}</h1>
+</center>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <td>{{ tugasakhir.mahasiswa_id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Judul Tugas Akhir</th>
+                        <td>{{ tugasakhir.judul}}</td>
+                    </tr>
+                    <tr>
+                        <th>Bukti Acc Ujian Sidang Dari Dosen Pembimbing Tugas Akhir</td>
+                        <td>
+                            {% if tugasakhir.acc_ujian %}
+                                <li><a href="{{ Tugasakhir.acc_ujian.url }}">{{ Tugasakhir.acc_ujian.name }}</a></li>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti Bebas Teori Dari Dosen Pembimbing Akademik</th>
+                        <td>
+                            {% if tugasakhir.bebas_teori %}
+                                <img src="{{ tugasakhir.bebas_teori.url }}" width="600">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti KRS Pada Semester Berjalan</td>
+                        <td>
+                            {% if tugasakhir.krs %}
+                                <img src="{{ tugasakhir.krs.url }}" width="600">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti Hasil Cek Plagiasi</td>
+                        <td>
+                            {% if tugasakhir.cek_plagiasi %}
+                                <img src="{{ tugasakhir.cek_plagiasi.url }}" width="600">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Soft File Tugas Akhir</td>
+                        <td>
+                            {% if tugasakhir.file_tugas_akhir %}
+                                <img src="{{ tugasakhir.file_tugas_akhir.url }}" width="600">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Surat Keterangan Diterima Dari Tempat Tugas Akhir</td>
+                        <td>
+                            {% if tugasakhir.sk_diterima %}
+                                <img src="{{ tugasakhir.sk_diterima.url }}" width="600">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Surat Keterangan Selesai Dari Tempat Tugas Akhir</td>
+                        <td>
+                            {% if tugasakhir.sk_selesai %}
+                                <img src="{{ tugasakhir.sk_selesai.url }}" width="600">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Lembar Penilaian</td>
+                        <td>
+                            {% if tugasakhir.lembar_penilaian %}
+                                <img src="{{ tugasakhir.lembar_penilaian.url }}" width="600">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti Kepemilikan Usaha</td>
+                        <td>
+                            {% if tugasakhir.kepemilikan_usaha %}
+                                <img src="{{ tugasakhir.kepemilikan_usaha.url }}" width="600">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti Mou atau SPK</td>
+                        <td>
+                            {% if tugasakhir.bukti_mou_spk %}
+                                <img src="{{ tugasakhir.bukti_mou_spk.url }}" width="600">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti Ijazah Terakhir (SMA/SMK/Sederajat)</td>
+                        <td>
+                            {% if tugasakhir.ijazah_terakhir %}
+                                <img src="{{ tugasakhir.ijazah_terakhir.url }}" width="600">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti Akte Kelahiran</td>
+                        <td>
+                            {% if tugasakhir.akte_kelahiran %}
+                                <img src="{{ tugasakhir.akte_kelahiran.url }}" width="600">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti KTP atau KK</td>
+                        <td>
+                            {% if tugasakhir.ktp_kk %}
+                                <img src="{{ tugasakhir.ktp_kk.url }}" width="600">
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Pas Foto Hitam Putih 2x3</td>
+                        <td>
+                            {% if tugasakhir.foto %}
+                            <a href="{{ validasiakademik.foto.url }}">
+                                <img src="{{ validasiakademik.foto.url }}" width="200">
+                            </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </thead>
+            </table>
+            <a href="/data-upload" class="btn btn-primary"><i class="fa fa-arrow-left"></i></a>
+            <a href="{% url 'ubah_tugasakhir' tugasakhir.id %}" class="btn btn-warning"><i class="fa fa-pen-to-square"></i></a>
+            <button data-bs-toggle="modal" data-bs-target="#hapus-{{ tugasakhir.id }}" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+            <div class="modal" id="hapus-{{ tugasakhir.id }}">
+                <div class="modal-dialog">
+                   <div class="modal-content">
+                      <div class="modal-header">
+                         <div class="modal-title">
+                            <h3>Hapus</h3>
+                         </div>
+                      </div>
+                      <div class="modal-body">
+                         Apakah anda yakin ingin menghapus data,&nbsp;<strong>{{ tugasakhir.mahasiswa_id | upper }}</strong>?
+                      </div>
+                      <div class="modal-footer">
+                         <a href="{% url 'hapus_tugasakhir' tugasakhir.id %}" class="btn btn-danger"><i class="fa fa-check"></i></a>
+                         <button data-bs-dismiss="modal" class="btn btn-dark"><i class="fa fa-xmark"></i></button>
+                      </div>
+                   </div>
+                </div>
+             </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<center>
+    <h1>Data Validasi Keuangan</h1>
+</center>
+<div class="container">
+    <div class="row">
+        <div class="col">
+         <table class="table table-bordered table-striped" style="table-layout: fixed;">
+            <thead>
+               <tr>
+                  <th>NPM</th>
+                  <th>NAMA MAHASISWA</th>
+                  <th>STATUS VALIDASI</th>
+                  <th>ACTION</th>
+               </tr>
+            </thead>
+            <tbody>
+                {% for validasi in validasi_keuangan %}
+                  <tr>
+                     <td>{{ validasi.mahasiswa_id.nim }}</td>
+                     <td>{{ validasi.mahasiswa_id.nama }}</td>
+                    {% if validasi.status_validasi_keuangan == 'Belum Divalidasi' %}
+                        <td><p style="background-color: lightgray; text-align:center; border-radius: 20px;">Belum Valid</i></p></td>
+                    {% elif validasi.status_validasi_keuangan == 'Sudah Divalidasi' %}
+                        <td><p style="background-color: lime; text-align:center; border-radius: 20px;">Valid</i></p></td>
+                    {% endif %}
+                     <td style="text-align:center;">
+                        <a href="{% url 'ubah_validasi_keuangan' validasi.id %}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                     </td>
+                  </tr>
+                {% endfor %}
+            </tbody>
+         </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

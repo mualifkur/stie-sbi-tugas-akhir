@@ -1,0 +1,221 @@
+<style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    h1 {
+      text-align: center;
+    }
+    .section-title {
+      font-weight: bold;
+    }
+    .content {
+      width: 90%;
+      margin: 0 auto;
+    }
+    .team-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px; /* Mengurangi jarak bawah antar tabel */
+    }
+    .info-table {
+      width: 90%;
+      border-collapse: collapse;
+      margin-bottom: 10px;
+    }
+    .info-table td {
+      padding: 3px; /* Mengurangi padding di sekitar sel tabel */
+      vertical-align: top; /* Menjaga teks di bagian atas sel tabel */
+    }
+    .info-table td:nth-child(2) {
+      padding-left: 5px; /* Mengurangi jarak antara kolom pertama dan kolom kedua */
+    }
+    .team-table,
+    .team-table td,
+    .team-table th {
+      border: 1px solid;
+      padding: 5px;
+    }
+    .team-table th {
+      text-align: center;
+      font-weight: normal;
+    }
+    .signature {
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 70px;
+      font-family: "Times New Roman", Times, serif;
+        font-size: 16px;
+    }
+    .container-table-a {
+      width: 100%;
+      margin-left: 5px;
+    }
+    .container-table-b {
+      margin-left: 10px;
+    }
+    .container-table-c {
+      width: 50%;
+      margin-left: 22px;
+    }
+    .container-table-d {
+      width: 95%;
+    }
+    .container-table-e {
+      width: 90%;
+    }
+  
+    .logo-kop img {
+      height: 110px;
+      width: 144px;
+      object-fit: fill;
+    }
+    .container-header-kop {
+      display: flex;
+      justify-content: center;
+      gap: 65px;
+    }
+  
+    .header-kop {
+      color: #27397f;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    .header-kop table {
+      color: #27397f;
+    }
+    .header-kop h1,
+    p {
+      margin: 0 0;
+      padding: 0 0;
+    }
+    .header-kop table {
+      margin: 0 auto;
+    }
+  
+    .hr-style {
+      height: 2px;
+      background-color: #27397f;
+    }
+    .button {
+        color: inherit; /* Warna mengikuti elemen induk */
+        text-decoration: none; /* Menghilangkan garis bawah */
+        padding: 5px 10px; /* Mengatur padding agar mirip dengan tombol */
+        border: 1px solid #ccc; /* Mengatur border agar mirip dengan tombol */
+        background-color: #f8f8f8; /* Warna latar belakang tombol */
+        cursor: pointer; /* Mengubah kursor menjadi pointer untuk efek klik */
+    }
+    
+    .button:hover {
+        background-color: #e6e6e6; /* Warna latar saat hover */
+    }
+    .p-1 p {
+        text-align: left;
+        margin-left: 22px;
+        width: 90%;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 16px;
+    }
+    @media print {
+      @page {
+        size: A4; /* Mengatur ukuran kertas menjadi A4 */
+        margin-top: 6cm;
+        margin-left: 2.8cm;
+        margin-bottom: 2.54cm;
+        margin-right: 2.25cm;
+      }
+      .content {
+        width: 100%;
+        margin: 0;
+      }
+      .info-table,
+      .team-table {
+        width: 100%;
+        page-break-inside: avoid; /* Menghindari pemotongan tabel di tengah halaman */
+      }
+      .no-print {
+        display: none;
+      }
+    }
+  </style>
+  {% load static %} {% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <center>
+          <p style="font-size: 16px; font-weight: bold;">REKAPITULASI UJIAN TUGAS AKHIR PENELITIAN</p>
+          <p style="font-size: 16px; font-weight: bold;">SEKOLAH TINGGI ILMU EKONOMI SBI YOGYAKARTA</p>
+          <p style="font-size: 16px; font-weight: bold;">JURUSAN {{ jurusan|upper }}</p><br><br>
+        </center>
+        <div class="container-table-a">
+          <table class="info-table">
+            <tr>
+              <td>NAMA</td>
+              <td>:</td>
+              <td>{{ nama_mahasiswa|upper }}</td>
+            </tr>
+            <tr>
+              <td>NPM</td>
+              <td>:</td>
+              <td>{{ npm }}</td>
+            </tr>
+          </table>
+        </div><br>
+        <p style="font-size: 16px">NILAI UJIAN TUGAS AKHIR PENELITIAN</p>
+        <div class="container-table-b">
+          <table class="team-table">
+            <tr>
+              <th rowspan="2">Tanggal Ujian</th>
+              <th rowspan="2">MATA KULIAH</th>
+              <th colspan="2">Nilai</th>
+          </tr>
+          <tr>
+              <th>Nilai Angka</th>
+              <th>Nilai Huruf</th>
+          </tr>
+          <tr>
+              <td rowspan="5" style="text-align: center;">{{ tanggal }}</td>
+              <td>Perencanaan Kegiatan</td>
+              <td>{{ nilai_perancangan_kegiatan }}</td>
+              <td>{{ grade_perancangan_kegiatan }}</td>
+          </tr>
+          <tr>
+              <td>Penelitian Lapangan</td>
+              <td>{{ nilai_penelitian_lapangan }}</td>
+              <td>{{ grade_penelitian_lapangan }}</td>
+          </tr>
+          <tr>
+              <td>Penulisan Laporan Penelitian</td>
+              <td>{{ nilai_laporan_penelitian }}</td>
+              <td>{{ grade_laporan_penelitian }}</td>
+          </tr>
+          <tr>
+              <td>Seminar Hasil Penelitian (Ujian Penelitian)</td>
+              <td>{{ nilai_seminar_hasil_penelitian }}</td>
+              <td>{{ grade_seminar_hasil_penelitian }}</td>
+          </tr>
+          <tr>
+              <td>Penulisan Publikasi Penelitian</td>
+              <td>{{ nilai_penulisan_publikasi }}</td>
+              <td>{{ grade_penulisan_publikasi }}</td>
+          </tr>
+          <tr>
+              <td rowspan="2" style="text-align: center;">Tanda Tangan</td>
+              <td>Ketua Penguji<br>{{ ketua_penguji }}</td>
+              <td colspan="2"></td>
+          </tr>
+          <tr>
+              <td>Anggota<br>{{ anggota }}</td>
+              <td colspan="2"></td>
+          </tr>
+          </table>
+      <button class="button no-print" onclick="window.print()">Print</button>
+      <a class="button no-print" href="{% url 'berita_acara' %}">Kembali ke Form</a>
+    </div>
+    </div>
+  </div>
+  {% endblock %}
+  

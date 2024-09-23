@@ -1,0 +1,256 @@
+<style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    h1 {
+      text-align: center;
+    }
+    .section-title {
+      font-weight: bold;
+    }
+    .content {
+      width: 90%;
+      margin: 0 auto;
+    }
+    .team-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px; /* Mengurangi jarak bawah antar tabel */
+    }
+    .info-table {
+      width: 100%;
+      border-spacing: 2px;
+    }
+    .info-table td, .info-table th {
+      padding: 2px; /* Mengurangi padding di sekitar sel tabel */
+      vertical-align: top; /* Menjaga teks di bagian atas sel tabel */
+      font-weight: normal;d
+    }
+    .info-table td:nth-child(2) {
+      padding-left: 5px; /* Mengurangi jarak antara kolom pertama dan kolom kedua */
+    }
+    .team-table,
+    .team-table td,
+    .team-table th {
+      border: 1px solid;
+      border-spacing: 2px;
+      padding: 3px;
+    }
+    .team-table th {
+      text-align: center;
+      font-weight: normal;
+    }
+    .signature {
+      margin-right: 70px;
+    }
+    .container-table-a {
+      width: 100%;
+      margin-left: 2px;
+    }
+    .container-table-b {
+      width: 100%;
+      margin-left: 2px;
+    }
+    .container-table-c {
+      width: 58%;
+      margin-left: 22px;
+    }
+    .container-table-d {
+      width: 95%;
+    }
+    .container-table-e {
+      width: 90%;
+    }
+  
+    .logo-kop img {
+      height: 110px;
+      width: 144px;
+      object-fit: fill;
+    }
+    .container-header-kop {
+      display: flex;
+      justify-content: center;
+      gap: 65px;
+    }
+    
+    .header-kop {
+      color: #27397f;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    .header-kop table {
+      color: #27397f;
+    }
+  
+    .header-kop h1,
+    p {
+      margin: 0 0;
+      padding: 0 0;
+    }
+    .header-kop table {
+      margin: 0 auto;
+    }
+  
+    .hr-style {
+      height: 2px;
+      background-color: #27397f;
+    }
+    .button {
+      color: inherit; /* Warna mengikuti elemen induk */
+      text-decoration: none; /* Menghilangkan garis bawah */
+      padding: 5px 10px; /* Mengatur padding agar mirip dengan tombol */
+      border: 1px solid #ccc; /* Mengatur border agar mirip dengan tombol */
+      background-color: #f8f8f8; /* Warna latar belakang tombol */
+      cursor: pointer; /* Mengubah kursor menjadi pointer untuk efek klik */
+    }
+    
+    .button:hover {
+        background-color: #e6e6e6; /* Warna latar saat hover */
+    }
+    @media print {
+      @page {
+        size: 210mm 330mm; /* Ukuran kertas F4 dalam milimeter */
+        margin-top: 60mm; /* 6 cm */
+        margin-left: 28mm; /* 2.8 cm */
+        margin-bottom: 25.4mm; /* 2.54 cm */
+        margin-right: 22.5mm; /* 2.25 cm */
+    }
+      .content {
+        width: 100%;
+        margin: 0;
+      }
+      .info-table,
+      .team-table {
+        width: 100%;
+        page-break-inside: avoid; /* Menghindari pemotongan tabel di tengah halaman */
+      }
+      .no-print {
+        display: none;
+      }
+    }
+  </style>
+  {% load static %} {% block content %}
+  {% comment %} <div class="container-header-kop">
+    <div class="logo-kop">
+      <a href="#"><img src="{% static 'images/logo_client.png' %}" alt="" /></a>
+    </div>
+    <div class="header-kop">
+      <h1>STIE SOLUSI BISNIS INDONESIA YOGYAKARTA</h1>
+      <table>
+        <tr>
+          <th scope="row">Program Studi Akutansi</th>
+          <td>:</td>
+          <td>Terakreditasi</td>
+          <td>"B"</td>
+        </tr>
+        <tr>
+          <th scope="row">Program Studi Manajemen</th>
+          <td>:</td>
+          <td>Terakreditasi</td>
+          <td>"B"</td>
+        </tr>
+      </table>
+      <p>
+        Jl. Ring Road Utara No.17, Ngringin, Condongcatur, Kec. Depok, Kabupaten
+        Sleman, Daerah Istimewa Yogyakarta 55283
+      </p>
+    </div>
+  </div> {% endcomment %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <center>
+          <p style="font-size: 16px; font-weight: bold;">BERITA ACARA</p>
+          <p style="font-size: 16px; text-decoration: underline; font-weight: bold;">SEMINAR TUGAS AKHIR PENELITIAN</p>
+          <p style="font-size: 16px; font-weight: bold;">Nomor : {{ no_surat }}</p><br>
+        </center>
+        <p style="font-size: 16px;">Pada hari ini  KAMIS  tanggal  15 AGUSTUS 2024  bertempat di STIE SBI Jl. Ring Road Utara No. 17 Condong Catur Yogyakarta</p><br>
+        <p style="font-size: 16px; text-align: center;">TELAH DISELENGGARAKAN UJIAN SEMINAR  TUGAS AKHIR PENELITIAN</p><br>  
+        <div class="container-table-a">
+            <table class="info-table">
+              <tr>
+                <td>NAMA</td>
+                <td>:</td>
+                <td>{{ nama_mahasiswa }}</td>
+              </tr>
+              <tr>
+                <td>NPM</td>
+                <td>:</td>
+                <td>{{ npm }}</td>
+              </tr>
+              <tr>
+                <td>JURUSAN</td>
+                <td>:</td>
+                <td>{{ jurusan }}</td>
+              </tr>
+              <tr>
+                <td>JUDUL PENELITIAN</td>
+                <td>:</td>
+                <td>{{ judul_ta }}</td>
+              </tr>
+              <tr>
+                <td>PEMBIMBING</td>
+                <td>:</td>
+                <td>{{ nama_pembimbing }}</td>
+              </tr>
+            </table>
+          </div><br>
+          <p style="font-size: 16px">Saudara tersebut dinyatakan:</p>
+          <p style="font-size: 16px">Ujian Seminar Penelitian:&nbsp;&nbsp;&nbsp;LULUS/TIDAK LULUS *), dengan nilai {{ nilai }}</p>
+          <p style="font-size: 16px">Catatan:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Revisi / Tanpa Revisi</p>
+          <br>
+          <p style="font-size: 16px">SUSUNAN TIM PENGUJI</p>
+          <div class="container-table-b">
+            <table class="team-table">
+              <tr>
+                <th>NO.</th>
+                <th>NAMA PENGUJI</th>
+                <th>JABATAN DALAM TIM</th>
+                <th>JABATAN AKADEMIK</th>
+                <th style="">TANDA TANGAN</th>
+              </tr>
+              <tr>
+                <td>01.</td>
+                <td>{{ nama_penguji1 }}</td>
+                <td style="text-align:center;">{{ jabatan_tim1 }}</td>
+                <td style="text-align:center;">{{ jabatan_akademik1 }}</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>02.</td>
+                <td>{{ nama_penguji2 }}</td>
+                <td style="text-align:center;">{{ jabatan_tim2 }}</td>
+                <td style="text-align:center;">{{ jabatan_akademik2 }}</td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+          <p style="font-size: 16px">Berita Acara ini dibuat dengan keadaan sesungguhnya untuk digunakan seperlunya.</p><br>
+          <p style="font-size: 16px">Yogyakarta, {{ tanggal }}</p>
+          <div class="container-table-b">
+            <table class="info-table">
+              <tr>
+                <td>Ketua STIE SBI<br><br><br><br><br></td>
+                <td style="text-align: center;">Ketua Tim Penguji</td>
+              </tr>
+              <tr>
+                <td style="text-decoration: underline;">DR. Saifudin Zuhri, S.Ag., M.Si</td>
+                <td style="text-align: center;">{{ nama_penguji1 }}</td>
+              </tr>
+              <tr>
+                <td>NIK 2051021</td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        <button class="button no-print" onclick="window.print()">Print</button>
+        <a class="button no-print" href="{% url 'berita_acara' %}">Kembali ke Form</a>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+  

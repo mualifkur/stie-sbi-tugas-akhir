@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <div class="container">
+    <div class="row">
+       <div class="col">
+        <h1>Form Berita Acara Ujian Tugas Akhir</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-success" type="submit">Cetak</button>
+        </form>
+       </div>
+    </div>
+ </div>
+{% endblock %}

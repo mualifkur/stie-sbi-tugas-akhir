@@ -1,0 +1,204 @@
+<style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    h1 {
+      text-align: center;
+    }
+    .section-title {
+      font-weight: bold;
+    }
+    .content {
+      width: 90%;
+      margin: 0 auto;
+    }
+    .team-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px; /* Mengurangi jarak bawah antar tabel */
+    }
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px;
+    }
+    .info-table td {
+      padding: 3px; /* Mengurangi padding di sekitar sel tabel */
+      vertical-align: top; /* Menjaga teks di bagian atas sel tabel */
+    }
+    .info-table td:nth-child(2) {
+      padding-left: 5px; /* Mengurangi jarak antara kolom pertama dan kolom kedua */
+    }
+    .team-table,
+    .team-table td,
+    .team-table th {
+      border: 1px solid;
+      padding: 5px;
+    }
+    .team-table th {
+      text-align: center;
+      font-weight: bold;
+    }
+    .signature {
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 70px;
+    }
+    .container-table-a {
+      width: 90%;
+      margin-left: 10px;
+    }
+    .container-table-b {
+      width: 50%;
+      margin-left: 120px;
+    }
+    .container-table-c {
+      width: 30%;
+      margin-left: 150px;
+    }
+    .container-table-d {
+      width: 95%;
+    }
+    .container-table-e {
+      width: 90%;
+    }
+  
+    .logo-kop img {
+      height: 110px;
+      width: 144px;
+      object-fit: fill;
+    }
+    .container-header-kop {
+      display: flex;
+      justify-content: center;
+      gap: 65px;
+    }
+  
+    .header-kop {
+      color: #27397f;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    .header-kop table {
+      color: #27397f;
+    }
+  
+    .header-kop h1,
+    p {
+      margin: 0 0;
+      padding: 0 0;
+    }
+    .header-kop table {
+      margin: 0 auto;
+    }
+  
+    .hr-style {
+      height: 2px;
+      background-color: #27397f;
+    }
+    .button {
+        color: inherit; /* Warna mengikuti elemen induk */
+        text-decoration: none; /* Menghilangkan garis bawah */
+        padding: 5px 10px; /* Mengatur padding agar mirip dengan tombol */
+        border: 1px solid #ccc; /* Mengatur border agar mirip dengan tombol */
+        background-color: #f8f8f8; /* Warna latar belakang tombol */
+        cursor: pointer; /* Mengubah kursor menjadi pointer untuk efek klik */
+    }
+    
+    .button:hover {
+        background-color: #e6e6e6; /* Warna latar saat hover */
+    }
+    @media print {
+      @page {
+        size: A4; /* Mengatur ukuran kertas menjadi A4 */
+        margin-top: 6cm;
+        margin-left: 2.8cm;
+        margin-bottom: 2.54cm;
+        margin-right: 2.25cm;
+      }
+      .content {
+        width: 100%;
+        margin: 0;
+      }
+      .info-table,
+      .team-table {
+        width: 100%;
+        page-break-inside: avoid; /* Menghindari pemotongan tabel di tengah halaman */
+      }
+      .no-print {
+        display: none;
+      }
+    }
+  </style>
+  {% load static %} {% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <center>
+            <p style="font-size: 16px; text-decoration: underline;">YUDISIUM UJIAN TUGAS AKHIR PENELITIAN JURUSAN {{ jurusan|upper }}</p>
+            <p style="font-size: 16px">Nomor : {{ nomor_surat }}</p><br>
+          </center>
+          <p style="font-size: 16px">Berdasarkan hasil rapat ujian tugas akhir penelitian Sekolah Tinggi Ilmu Ekonomi SBI Jurusan {{ jurusan }}  pada tanggal {{ tanggal }} memutuskan saudara :</p>
+            <p style="font-size: 16px">{{ judul_ta }}</p><br><br>
+            <div class="container-table-a">
+              <table class="info-table">
+                <tr>
+                  <td>NAMA</td>
+                  <td>:</td>
+                  <td>{{ nama_mahasiswa }}</td>
+                </tr>
+                <tr>
+                  <td>NPM</td>
+                  <td>:</td>
+                  <td>{{ npm }}</td>
+                </tr>
+              </table>
+            </div>
+            <p style="font-size: 16px">Dinyatakan *) :</p>
+            <div class="container-table-b">
+              <table class="info-table">
+                <tr>
+                  <td>1.</td>
+                  <td>Lulus Ujian Tugas Akhir Penelitian</td>
+                </tr>
+              </table>
+            </div>
+            <div class="container-table-c">
+              <table class="info-table">
+                <tr>
+                  <td>a. </td>
+                  <td>Tanpa Revisi</td>
+                </tr>
+                <tr>
+                  <td>b. </td>
+                  <td>Dengan Revisi</td>
+                </tr>
+              </table>
+            </div><br>
+            <div class="container-table-b">
+              <table class="info-table">
+                <tr>
+                  <td>2.</td>
+                  <td>Tidak Lulus Ujian Tugas Akhir Penelitian</td>
+                </tr>
+              </table>
+            </div><br><br>
+            <p style="font-size: 16px">Apabila kemudian hari terdapat kekeliruan akan diadakan pembetulan dan perbaikan sebagaimana mestinya</p><br><br>
+            <p style="font-size: 16px">Yogyakarta, {{ tanggal }}</p>
+            <p style="font-size: 16px">Ketua STIE SBI Yogyakarta</p>
+            <br><br><br><br>
+            <p style="text-decoration: underline; font-size: 16px">DR. Saifudin Zuhri, S.Ag., M.Si</p>
+            <p style="font-size: 16px">NIK 2051021</p>
+        
+          <button class="button no-print" onclick="window.print()">Print</button>
+          <a class="button no-print" href="{% url 'berita_acara' %}">Kembali ke Form</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+  

@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script src="{% static 'js/jquery-3.7.1.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+    <meta http-equiv="refresh" content="0; url= {% url 'home' %}" />
+    {% else %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 offset-md-4">
+          <div class="card">
+            <div class="card-header">LOGIN</div>
+            <div class="card-body">
+              <form method="post">
+                {% csrf_token %} {{ form.as_p }}
+                <button class="btn btn-primary">Login</button>
+                <a class="btn btn-primary" href="/signup">Signup</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </body>
+</html>

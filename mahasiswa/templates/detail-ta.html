@@ -1,0 +1,186 @@
+{% extends 'base.html' %} {% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <table class="table table-bordered table-striped" style="table-layout: fixed;">
+          <thead>
+            <tr>
+              <th>Nomor Pokok Mahasiswa</th>
+              <td>{{ tugasakhir.mahasiswa_id.nim }}</td>
+            </tr>
+            <tr>
+              <th>Nama Mahasiswa</th>
+              <td>{{ tugasakhir.mahasiswa_id.nama }}</td>
+            </tr>
+            <tr>
+              <th>Judul Tugas Akhir</th>
+              <td>{{ tugasakhir.judul }}</td>
+            </tr>
+            <tr>
+              <th>Bukti Acc Ujian Sidang Dari Dosen Pembimbing Tugas Akhir</th>
+              <td>
+                {% if tugasakhir.acc_ujian %}
+                  <a href="{{ tugasakhir.acc_ujian.url }}" target="_blank">
+                    <button class="btn btn-secondary">Lihat File</button>
+                  </a>
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <th>Bukti Bebas Teori Dari Dosen Pembimbing Akademik</th>
+              <td>
+                <a href="{{ tugasakhir.bebas_teori.url }}" target="_blank">
+                  <button class="btn btn-secondary">Lihat File</button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>Bukti KRS Pada Semester Berjalan</th>
+              <td>
+                <a href="{{ tugasakhir.krs.url }}" target="_blank">
+                  <button class="btn btn-secondary">Lihat File</button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>Bukti Hasil Cek Plagiasi</th>
+              <td>
+                <a href="{{ tugasakhir.cek_plagiasi.url }}" target="_blank">
+                  <button class="btn btn-secondary">Lihat File</button></a>
+              </td>
+            </tr>
+            <tr>
+              <th>Soft File Tugas Akhir</th>
+              <td>
+                {% if tugasakhir.file_tugas_akhir %}
+                  <a href="{{ tugasakhir.file_tugas_akhir.url }}" target="_blank">
+                    <button class="btn btn-secondary">Lihat File</button>
+                  </a>
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <th>Surat Keterangan Diterima Dari Tempat Tugas Akhir</th>
+              <td>
+                <a href="{{ tugasakhir.sk_diterima.url }}" target="_blank">
+                  <button class="btn btn-secondary">Lihat File</button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>Surat Keterangan Selesai Dari Tempat Tugas Akhir</th>
+              <td>
+                <a href="{{ tugasakhir.sk_selesai.url }}" target="_blank">
+                  <button class="btn btn-secondary">Lihat File</button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>Lembar Penilaian</th>
+              <td>
+                <a href="{{ tugasakhir.lembar_penilaian.url }}" target="_blank">
+                  <button class="btn btn-secondary">Lihat File</button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>Bukti Kepemilikan Usaha</th>
+              <td>
+                <a href="{{ tugasakhir.kepemilikan_usaha.url }}" target="_blank">
+                  <button class="btn btn-secondary">Lihat File</button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>Bukti MoU atau SPK</th>
+              <td>
+                <a href="{{ tugasakhir.bukti_mou_spk.url }}" target="_blank">
+                  <button class="btn btn-secondary">Lihat File</button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>Bukti Ijazah Terakhir (SMA/SMK/Sederajat)</th>
+              <td>
+                <a href="{{ tugasakhir.ijazah_terakhir.url }}" target="_blank">
+                  <button class="btn btn-secondary">Lihat File</button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>Bukti Akte Kelahiran</th>
+              <td>
+                <a href="{{ tugasakhir.akte_kelahiran.url }}" target="_blank">
+                  <button class="btn btn-secondary">Lihat File</button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>Bukti KTP atau KK</th>
+              <td>
+                <a href="{{ tugasakhir.ktp_kk.url }}" target="_blank">
+                  <button class="btn btn-secondary">Lihat File</button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <th>Pas Foto Hitam Putih 2x3</th>
+              <td>
+                {% if tugasakhir.foto %}
+                  <a href="{{ tugasakhir.foto.url }}" target="_blank">
+                    <img src="{{ tugasakhir.foto.url }}" width="255px" height="330px"/>
+                  </a>
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <th>Status Validasi Dosen Pembimbing</th>
+              {% if tugasakhir.status_validasi_akademik == 'Belum Divalidasi' %}
+                  <td><p style="background-color: lightgrey; text-align:center; border-radius: 20px;">Belum Valid</i></p></td>
+              {% elif tugasakhir.status_validasi_akademik == 'Sudah Divalidasi' %}
+                  <td><p style="background-color: lime; text-align:center; border-radius: 20px;">Valid</i></p></td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Status Validasi Keuangan</th>
+              {% if tugasakhir.status_validasi_keuangan == 'Belum Divalidasi' %}
+                  <td><p style="background-color: lightgrey; text-align:center; border-radius: 20px;">Belum Valid</i></p></td>
+              {% elif tugasakhir.status_validasi_keuangan == 'Sudah Divalidasi' %}
+                  <td><p style="background-color: lime; text-align:center; border-radius: 20px;">Valid</i></p></td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Status Validasi Akademik</th>
+              {% if tugasakhir.status_validasi_dospem == 'Belum Divalidasi' %}
+                  <td><p style="background-color: lightgrey; text-align:center; border-radius: 20px;">Belum Valid</i></p></td>
+              {% elif tugasakhir.status_validasi_dospem == 'Sudah Divalidasi' %}
+                  <td><p style="background-color: lime; text-align:center; border-radius: 20px;">Valid</i></p></td>
+              {% endif %}
+            </tr>
+          </thead>
+        </table>
+        <a href="/daftar-tugas-akhir" class="btn btn-primary"><i class="fa fa-arrow-left"></i></a>
+        <a href="{% url 'ubah_tugasakhir' tugasakhir.id %}" class="btn btn-warning"><i class="fa fa-pen-to-square"></i></a>
+        <button data-bs-toggle="modal" data-bs-target="#hapus-{{ tugasakhir.id }}" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+        <div class="modal" id="hapus-{{ tugasakhir.id }}">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="modal-title">
+                  <h3>Hapus</h3>
+                </div>
+              </div>
+              <div class="modal-body">
+                Apakah anda yakin ingin menghapus data,&nbsp;<strong>{{ tugasakhir.mahasiswa_id|upper }}</strong>?
+              </div>
+              <div class="modal-footer">
+                <a href="{% url 'hapus_tugasakhir' tugasakhir.id %}" class="btn btn-danger"><i class="fa fa-check"></i></a>
+                <button data-bs-dismiss="modal" class="btn btn-dark"><i class="fa fa-xmark"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><br />
+{% endblock %}

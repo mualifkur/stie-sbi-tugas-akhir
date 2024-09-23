@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% block content %}
+<center>
+    <h1>DETAIL DATA, {{ validasiakademik.mahasiswa_id.nama }}</h1>
+</center>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered table-striped" style="table-layout: fixed;">
+                <thead>
+                    <tr>
+                        <th>Nomor Pokok Mahasiswa</th>
+                        <td>{{ validasiakademik.mahasiswa_id.nim }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama Mahasiswa</th>
+                        <td>{{ validasiakademik.mahasiswa_id.nama }}</td>
+                    </tr>
+                    <tr>
+                        <th>Judul Tugas Akhir</th>
+                        <td>{{ validasiakademik.judul}}</td>
+                    </tr>
+                    <tr>
+                        <th>Bukti Acc Ujian Sidang Dari Dosen Pembimbing Tugas Akhir</td>
+                        <td>
+                            {% if validasiakademik.acc_ujian %}
+                                <a href="{{ validasiakademik.acc_ujian.url }}" target="_blank">
+                                    <button class="btn btn-secondary">Lihat File</button>
+                                </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti Bebas Teori Dari Dosen Pembimbing Akademik</th>
+                        <td>
+                            <a href="{{ validasiakademik.bebas_teori.url }}" target="_blank">
+                                <button class="btn btn-secondary">Lihat File</button>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti KRS Pada Semester Berjalan</td>
+                        <td>
+                            <a href="{{ validasiakademik.krs.url }}" target="_blank">
+                                <button class="btn btn-secondary">Lihat File</button>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti Hasil Cek Plagiasi</td>
+                        <td>
+                            <a href="{{ validasiakademik.cek_plagiasi.url }}" target="_blank">
+                                <button class="btn btn-secondary">Lihat File</button>                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Soft File Tugas Akhir</td>
+                        <td>
+                            <a href="{{ validasiakademik.file_tugas_akhir.url }}" target="_blank">
+                                <button class="btn btn-secondary">Lihat File</button>                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Surat Keterangan Diterima Dari Tempat Tugas Akhir</td>
+                        <td>
+                            <a href="{{ validasiakademik.sk_diterima.url }}">
+                                <button class="btn btn-secondary">Lihat File</button>                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Surat Keterangan Selesai Dari Tempat Tugas Akhir</td>
+                        <td>
+                            <a href="{{ validasiakademik.sk_selesai.url }}" target="_blank">
+                                <button class="btn btn-secondary">Lihat File</button>                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Lembar Penilaian</td>
+                        <td>
+                            <a href="{{ validasiakademik.lembar_penilaian.url }}" target="_blank">
+                                <button class="btn btn-secondary">Lihat File</button>                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti Kepemilikan Usaha</td>
+                        <td>
+                            <a href="{{ validasiakademik.kepemilikan_usaha.url }}" target="_blank">
+                                <button class="btn btn-secondary">Lihat File</button>                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti Mou atau SPK</td>
+                        <td>
+                            <a href="{{ validasiakademik.bukti_mou_spk.url }}" target="_blank">
+                                <button class="btn btn-secondary">Lihat File</button>                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti Ijazah Terakhir (SMA/SMK/Sederajat)</td>
+                        <td>
+                            <a href="{{ validasiakademik.ijazah_terakhir.url }}" target="_blank">
+                                <button class="btn btn-secondary">Lihat File</button>                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti Akte Kelahiran</td>
+                        <td>
+                            {% if validasiakademik.ktp_kk %}
+                            <a href="{{ validasiakademik.akte_kelahiran.url }}" target="_blank">
+                                <button class="btn btn-secondary">Lihat File</button>
+                            </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Bukti KTP atau KK</td>
+                        <td>
+                            {% if validasiakademik.ktp_kk %}
+                            <a href="{{ validasiakademik.ktp_kk.url }} " target="_blank">
+                                <button class="btn btn-secondary">Lihat File</button>
+                            </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Pas Foto Hitam Putih 2x3</td>
+                        <td>
+                            {% if validasiakademik.foto %}
+                            <a href="{{ validasiakademik.foto.url }}" target="_blank">
+                                <img src="{{ validasiakademik.foto.url }}" width="220px" height="330px">
+                            </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Status Validasi Akademik    </th>
+                        {% if validasiakademik.status_validasi_akademik == 'Belum Divalidasi' %}
+                        <td>
+                            <p style="background-color: lightgrey; text-align:center; border-radius: 15px;">Belum Valid</p>
+                        </td>
+                        {% elif validasiakademik.status_validasi_akademik == 'Sudah Divalidasi' %}
+                        <td>
+                            <p style="background-color: lime; text-align:center; border-radius: 15px;">Valid</p>
+                        </td>
+                        {% endif %}
+                    </tr>
+                </thead>
+            </table>
+            <a href="/data-validasi-akademik" class="btn btn-danger"><i class="fa fa-arrow-left"></i></a>
+            <a href="{% url 'ubah_validasi_akademik' validasiakademik.id %}" class="btn btn-success">
+                Validasi Data
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

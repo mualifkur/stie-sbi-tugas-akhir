@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block content %} <br />
+<center>
+  <h1>FORM PENDAFTARAN UJIAN SIDANG TUGAS AKHIR</h1>
+</center>
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col">
+      {% if message %}
+      <div class="alert alert-success">{{ message }}</div>
+      {% endif %}
+      <form action="/upload/" method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{form}}
+
+        <br /><button class="btn btn-success">
+          <i class="fa fa-floppy-disk"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
